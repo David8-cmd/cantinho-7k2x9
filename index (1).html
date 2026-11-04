@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#c2456b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nosso Cantinho</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf1f1;--card:rgba(255,255,255,.78);--ink:#33202a;--mute:#8d7380;--acc:#c2456b;--gold:#c9a063;--line:rgba(194,69,107,.15);--soft:#f8dfe6;--g1:#f7c6d4;--g2:#fde7d6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150d12;--card:rgba(48,28,38,.72);--ink:#fbe9ee;--mute:#c29aa7;--acc:#ff7fa3;--gold:#e6c28a;--line:rgba(255,127,163,.18);--soft:#3b2431;--g1:#4a1f33;--g2:#2c1a1f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#150d12;--card:rgba(48,28,38,.72);--ink:#fbe9ee;--mute:#c29aa7;--acc:#ff7fa3;--gold:#e6c28a;--line:rgba(255,127,163,.18);--soft:#3b2431;--g1:#4a1f33;--g2:#2c1a1f;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(circle at 15% 0,var(--g1),transparent 55%),radial-gradient(circle at 90% 30%,var(--g2),transparent 50%),var(--bg);background-attachment:fixed;color:var(--ink);font-family:Inter,system-ui,sans-serif;min-height:100%}
+main{max-width:700px;margin:0 auto;padding:14px 14px 110px}
+header{text-align:center;padding:26px 10px 14px}
+h1,h2{font-family:"Playfair Display",Georgia,serif}
+h1{margin:0;font-size:2.3rem;letter-spacing:.5px}
+h1 em{color:var(--acc);font-style:normal}
+.dias{color:var(--mute);margin-top:6px}.dias b{font-family:"Playfair Display",Georgia,serif;color:var(--gold);font-size:1.7rem}
+.dias button,.lk{background:none;border:0;color:var(--acc);cursor:pointer;font:inherit;font-size:.82rem;text-decoration:underline}
+h2{margin:18px 0 10px;font-size:1.4rem}
+.glass{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:0 6px 24px rgba(194,69,107,.08)}
+form{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+input,select,button{font:inherit}
+input,select{flex:1 1 140px;min-width:0;color:var(--ink);background:rgba(255,255,255,.4);border:1px solid var(--line);border-radius:12px;padding:11px}
+input[name=nome],input[name=legenda]{flex:1 1 100%}
+.btn{flex:1 1 100%;background:linear-gradient(135deg,var(--acc),#e98a6f);color:#fff;border:0;border-radius:14px;padding:12px;font-weight:600;cursor:pointer;box-shadow:0 6px 16px rgba(194,69,107,.3)}
+.btn2{background:var(--soft);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:8px 14px;cursor:pointer}
+.filt{display:flex;gap:6px;margin-bottom:8px;overflow-x:auto}
+.filt button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:5px 13px;cursor:pointer;white-space:nowrap}.filt .on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.item{display:flex;gap:11px;align-items:flex-start;margin-top:10px;animation:pop .35s}
+@keyframes pop{from{transform:translateY(8px);opacity:0}}
+.ic{font-size:1.6rem;background:var(--soft);border-radius:14px;width:48px;height:48px;display:grid;place-items:center;flex:none}
+.tx{flex:1;min-width:0;overflow-wrap:anywhere}.nm{font-weight:600}.done .nm{text-decoration:line-through;color:var(--mute)}
+.obs,.meta{color:var(--mute);font-size:.82rem;margin-top:3px}.who{background:var(--soft);border-radius:10px;padding:1px 8px;margin-right:6px}
+.ab button{display:block;border:0;background:none;cursor:pointer;font-size:1.2rem;padding:3px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ph{padding:0;overflow:hidden;position:relative}.ph img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ph .cap{padding:8px 10px;font-size:.85rem}.ph .x{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.45);color:#fff;border:0;border-radius:50%;width:28px;height:28px;cursor:pointer}
+.bar{height:9px;background:var(--soft);border-radius:9px;overflow:hidden;margin:8px 0 4px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--gold));transition:width .4s}
+.cnt{font-family:"Playfair Display",Georgia,serif;font-size:1.5rem;color:var(--gold);text-align:center;min-width:64px;line-height:1}.cnt small{display:block;font:.7rem Inter,sans-serif;color:var(--mute)}
+.big{font-family:"Playfair Display",Georgia,serif;font-size:1.35rem;text-align:center;padding:26px 8px;min-height:110px;display:grid;place-items:center}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:center;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
+nav div{display:flex;gap:2px;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:26px;padding:5px;max-width:100%}
+nav button{border:0;background:none;color:var(--mute);cursor:pointer;padding:8px 12px;border-radius:20px;font-size:.72rem;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button b{font-size:1.25rem;font-weight:400}nav .on{background:var(--acc);color:#fff}
+.vazio,#msg{color:var(--mute);text-align:center;padding:28px 10px}
+#login{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:var(--bg)}#login form{max-width:360px;width:100%;text-align:center}#login input{flex:1 1 100%}</style>
+</head>
+<body>
+<div id="login" hidden><form id="lf" class="glass"><h1 style="font-size:1.8rem;margin:0 0 4px">Nosso <em>Cantinho</em> 💕</h1><p id="lerr" style="color:var(--acc);margin:0;min-height:1.2em"></p><p style="margin:0">Como você se chama?</p><input name="nome" placeholder="Seu nome" required maxlength="20"><button class="btn">Continuar</button></form></div>
+<main>
+<header><h1>Nosso <em>Cantinho</em> 💕</h1><div class="dias" id="dias"></div></header>
+<p id="msg">Carregando…</p>
+<div id="app" hidden><div id="v"></div></div>
+</main>
+<nav><div id="nav"></div></nav>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,doc,setDoc,updateDoc,deleteDoc,getDoc,onSnapshot} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+// COLE AQUI a configuração do seu projeto Firebase (passo a passo no chat)
+const firebaseConfig={apiKey:"AIzaSyA_whIvhqeFva0Bwqvzx--rbqnwGf20Wic",authDomain:"nosso-cantinho-10c5d.firebaseapp.com",projectId:"nosso-cantinho-10c5d",storageBucket:"nosso-cantinho-10c5d.firebasestorage.app",messagingSenderId:"326824297365",appId:"1:326824297365:web:f763806e7e177d142aec9c"};
+let NOME=(()=>{try{return localStorage.getItem("cantinho_nome")||""}catch(e){return ""}})();
+const ok=!firebaseConfig.apiKey.startsWith("COLE");
+const lg=document.getElementById("login"),lerr=document.getElementById("lerr");
+let auth,fs;
+if(ok){const ap=initializeApp(firebaseConfig);auth=getAuth(ap);fs=getFirestore(ap);}
+const DB={collection(n){const c=collection(fs,n);return{onSnapshot(f,e){return onSnapshot(c,s=>f({docs:s.docs.map(d=>({id:d.id,data:()=>d.data()}))}),e)},doc(i){return DB.doc(n+"/"+i)}}},
+doc(p){const r=doc(fs,p);return{set:o=>setDoc(r,o),update:o=>updateDoc(r,o),delete:()=>deleteDoc(r),get:async()=>{const s=await getDoc(r);return{data:()=>s.data()}},onSnapshot(f,e){return onSnapshot(r,s=>f({data:()=>s.data()}),e)}}}};
+const USR={id:async()=>NOME.toLowerCase()};
+function toData(b){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(b)})}
+async function startApp(){
+var $=function(x){return document.getElementById(x)},msg=$('msg');
+function modal(html,wire){return new Promise(function(res){var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:20px';var b=document.createElement('div');b.className='glass';b.style.cssText='max-width:380px;width:100%;background:var(--bg)';b.innerHTML=html;o.appendChild(b);document.body.appendChild(o);wire(b,function(v){o.remove();res(v)})})}
+var P='<p style="margin:0 0 12px;overflow-wrap:anywhere"></p>',BB='<div style="display:flex;gap:8px"><button class="btn2" style="flex:1">Cancelar</button><button class="btn" style="flex:1">OK</button></div>';
+window.alert=function(t){modal(P+'<button class="btn" style="width:100%">OK</button>',function(b,c){b.firstChild.textContent=t;b.querySelector('button').onclick=function(){c()}})};
+window.confirm=function(t){return modal(P+BB,function(b,c){b.firstChild.textContent=t;var s=b.querySelectorAll('button');s[0].onclick=function(){c(false)};s[1].onclick=function(){c(true)}})};
+window.prompt=function(t,d){return modal(P+'<input style="width:100%;margin-bottom:10px">'+BB,function(b,c){b.firstChild.textContent=t;var i=b.querySelector('input');i.value=d||'';var s=b.querySelectorAll('button');s[0].onclick=function(){c(null)};s[1].onclick=function(){c(i.value)};setTimeout(function(){i.focus();i.select()},50)})};
+var timer=setTimeout(function(){msg.textContent='Não consegui conectar. Verifique a internet e a configuração do Firebase.';},10000);
+var db=null,user=null,assets=null,me=null;
+db=DB;user=USR;assets={};var myName=NOME;
+if(!db||!user){msg.textContent='Entre na sua conta do Claude para usar o site.';return;}
+try{me=await user.id();}catch(e){}
+var cs=null;function stop(t){clearTimeout(timer);msg.textContent=t;}
+var TABS=[['lista','💝','Desejos'],['mem','📸','Memórias'],['datas','📅','Datas'],['metas','🎯','Metas'],['jogos','🎲','Jogos']];
+var view='lista',fil='todos',cfg={},ps={},D={lista:{},mem:{},datas:{},metas:{}},C={};
+var COLN={lista:'items',mem:'memorias',datas:'datas',metas:'metas'};
+Object.keys(COLN).forEach(function(k){C[k]=db.collection(COLN[k])});
+var cdoc=db.collection('config').doc('main');
+var IDEIAS=['Piquenique no fim de tarde','Noite de filme com pipoca','Cozinhar algo novo juntos','Passeio sem destino','Jantar à luz de velas em casa','Noite de jogos de tabuleiro','Tomar sorvete e caminhar','Montar um quebra-cabeça','Ver o pôr do sol juntos','Fazer um álbum de fotos','Escrever cartas um para o outro','Maratona da série favorita','Dançar na sala','Visitar um lugar novo na cidade'];
+var PERG=['Qual foi o momento em que você percebeu que gostava de mim?','Qual é a sua lembrança favorita nossa?','Onde você gostaria de viajar comigo?','O que você mais admira em mim?','Qual é o seu maior sonho para os próximos 5 anos?','Qual música lembra a gente?','O que eu faço que sempre te faz sorrir?','Como seria o nosso dia perfeito?','Qual é uma coisa que você ainda não me contou?','O que você quer que a gente nunca deixe de fazer?'];
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+function nome(o,n){return o===me?'Eu':(n||'Meu amor');}
+function list(k){return Object.keys(D[k]).map(function(i){return Object.assign({id:i},D[k][i])});}
+function days(iso){var p=iso.split('-');return Math.round((new Date(+p[0],p[1]-1,+p[2])-new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()))/864e5);}
+function nextOcc(iso,yearly){var d=days(iso);if(!yearly||d>=0)return d;var p=iso.split('-'),y=new Date().getFullYear();var n=days(y+'-'+p[1]+'-'+p[2]);return n>=0?n:days((y+1)+'-'+p[1]+'-'+p[2]);}
+function drawNav(){$('nav').innerHTML=TABS.map(function(t){return '<button data-t="'+t[0]+'" class="'+(t[0]==view?'on':'')+'"><b>'+t[1]+'</b>'+t[2]+'</button>'}).join('');}
+function drawDias(){var el=$('dias');if(cfg.inicio){var d=-days(cfg.inicio);el.innerHTML='Juntos há <b>'+Math.max(d,0)+'</b> dias <button id="bd">alterar</button>'+inv();}else el.innerHTML='<button id="bd">💞 Definir início do namoro</button>'+inv();}
+function inv(){return cs&&cs.a===me&&!cs.b?' <button id="bc">🔗 convidar</button>':'';}
+var V={
+lista:function(){
+ var l=list('lista').filter(function(d){return fil=='todos'||(fil=='meus'&&d.owner===me)||(fil=='outros'&&d.owner!==me)||(fil=='feitos'&&d.done)});
+ l.sort(function(a,b){return (a.done?1:0)-(b.done?1:0)||(b.prio||1)-(a.prio||1)||(b.criado||0)-(a.criado||0)});
+ return '<h2>Lista de desejos</h2><form class="glass" data-f="lista"><input name="nome" placeholder="O que você quer? (colar, anel, viagem…)" required maxlength="80"><select name="emoji">'+['🎁','💍','📿','👗','👟','🌹','🍫','🧸','✈️','🍽️'].map(function(e){return '<option>'+e+'</option>'}).join('')+'</select><select name="prio"><option value="1">💗 Quero</option><option value="2">💗💗 Muito</option><option value="3">💗💗💗 Sonho</option></select><input name="obs" placeholder="Observação ou link" maxlength="200"><button class="btn">Adicionar</button></form><div class="filt">'+[['todos','Todos'],['meus','Meus'],['outros','Do outro'],['feitos','Realizados']].map(function(f){return '<button data-fl="'+f[0]+'" class="'+(f[0]==fil?'on':'')+'">'+f[1]+'</button>'}).join('')+'</div>'+
+ (l.length?l.map(function(d){var ob=d.obs||'',lk=/^https?:\/\//i.test(ob);return '<div class="glass item'+(d.done?' done':'')+'"><div class="ic">'+esc(d.emoji)+'</div><div class="tx"><div class="nm">'+esc(d.nome)+'</div>'+(ob?'<div class="obs">'+(lk?'<a href="'+esc(ob)+'" target="_blank" rel="noopener" style="color:var(--acc)">ver link</a>':esc(ob))+'</div>':'')+'<div class="meta"><span class="who">'+esc(nome(d.owner,d.ownerNome))+'</span>'+'💗'.repeat(d.prio||1)+'</div></div><div class="ab"><button data-a="done" data-k="lista" data-id="'+d.id+'">'+(d.done?'↩️':'✅')+'</button>'+(d.owner===me?'<button data-a="del" data-k="lista" data-id="'+d.id+'">🗑️</button>':'')+'</div></div>'}).join(''):'<div class="vazio">Nada por aqui ainda 🌷</div>');},
+mem:function(){
+ var l=list('mem').sort(function(a,b){return (b.criado||0)-(a.criado||0)});
+ return '<h2>Nossas memórias</h2>'+(assets?'<form class="glass" data-f="mem"><input name="legenda" placeholder="Legenda (ex.: nosso primeiro passeio)" maxlength="100"><input type="file" name="foto" accept="image/*" required><button class="btn">Guardar memória 📸</button></form>':'<div class="glass vazio">Para enviar fotos, o dono da página precisa liberar seu acesso.</div>')+
+ (l.length?'<div class="grid">'+l.map(function(d){return '<div class="glass ph"><img src="'+esc(d.url)+'" alt="" loading="lazy"><div class="cap">'+esc(d.legenda||'')+'<div class="meta">'+esc(nome(d.owner,d.ownerNome))+' · '+new Date(d.criado).toLocaleDateString('pt-BR')+'</div></div>'+(d.owner===me?'<button class="x" data-a="del" data-k="mem" data-id="'+d.id+'">✕</button>':'')+'</div>'}).join('')+'</div>':'<div class="vazio">Ainda sem fotos. Guardem o primeiro momento 💞</div>');},
+datas:function(){
+ var l=list('datas').map(function(d){d.n=nextOcc(d.data,d.anual);return d});
+ if(cfg.inicio){var p=cfg.inicio.split('-'),t=new Date(),m=new Date(t.getFullYear(),t.getMonth(),+p[2]);if(m<new Date(t.getFullYear(),t.getMonth(),t.getDate()))m=new Date(t.getFullYear(),t.getMonth()+1,+p[2]);var iso=m.getFullYear()+'-'+String(m.getMonth()+1).padStart(2,'0')+'-'+String(m.getDate()).padStart(2,'0');l.push({id:'auto',titulo:'Mêsversário',emoji:'💞',data:iso,n:days(iso),auto:1});}
+ l.sort(function(a,b){return a.n-b.n});
+ return '<h2>Datas especiais</h2><form class="glass" data-f="datas"><input name="nome" placeholder="Título (aniversário, viagem…)" required maxlength="60"><input type="date" name="data" required><select name="anual"><option value="">Uma vez</option><option value="1">Todo ano</option></select><button class="btn">Adicionar data</button></form>'+
+ (l.length?l.map(function(d){return '<div class="glass item"><div class="cnt">'+(d.n<0?'—':d.n)+'<small>'+(d.n===0?'é hoje!':d.n<0?'passou':'dias')+'</small></div><div class="tx"><div class="nm">'+esc(d.emoji||'📅')+' '+esc(d.titulo||d.nome)+'</div><div class="meta">'+d.data.split('-').reverse().join('/')+(d.anual?' · todo ano':'')+'</div></div>'+(!d.auto&&d.owner===me?'<div class="ab"><button data-a="del" data-k="datas" data-id="'+d.id+'">🗑️</button></div>':'')+'</div>'}).join(''):'<div class="vazio">Nenhuma data ainda.</div>');},
+metas:function(){
+ var l=list('metas').sort(function(a,b){return (b.criado||0)-(a.criado||0)});
+ return '<h2>Metas a dois</h2><form class="glass" data-f="metas"><input name="nome" placeholder="Meta (ex.: juntar para a viagem)" required maxlength="80"><input type="number" name="alvo" min="1" max="100000" placeholder="Quantos passos? (ex.: 10)" required><button class="btn">Criar meta 🎯</button></form>'+
+ (l.length?l.map(function(d){var p=Math.min(100,Math.round((d.atual||0)/d.alvo*100));return '<div class="glass item"><div class="tx"><div class="nm">'+esc(d.nome)+(p>=100?' 🎉':'')+'</div><div class="bar"><i style="width:'+p+'%"></i></div><div class="meta">'+(d.atual||0)+' de '+d.alvo+' · '+p+'%</div></div><div class="ab"><button data-a="inc" data-k="metas" data-id="'+d.id+'">➕</button><button data-a="dec" data-k="metas" data-id="'+d.id+'">➖</button>'+(d.owner===me?'<button data-a="del" data-k="metas" data-id="'+d.id+'">🗑️</button>':'')+'</div></div>'}).join(''):'<div class="vazio">Criem a primeira meta juntos ✨</div>');},
+jogos:function(){return '<h2>Jogos e ideias</h2><div class="glass"><b>🎲 Roleta de encontros</b><div class="big" id="r1">O que faremos hoje?</div><button class="btn" data-g="roleta">Girar</button></div><div class="glass" style="margin-top:12px"><b>💬 Perguntas para se conhecerem</b><div class="big" id="r2">Toque para a primeira pergunta</div><button class="btn" data-g="perg">Próxima pergunta</button></div>';}
+};
+function render(){var a=document.activeElement;if(a&&/INPUT|SELECT/.test(a.tagName)&&view!=='jogos')return;$('v').innerHTML=V[view]();}
+function rerender(force){if(force){$('v').innerHTML=V[view]();}else render();}
+async function loadNames(){var ids=[];Object.keys(D).forEach(function(k){Object.keys(D[k]).forEach(function(i){var o=D[k][i].owner;if(o&&o!==me&&ids.indexOf(o)<0&&!ps[o])ids.push(o)})});if(!ids.length)return;try{var r=await user.profiles(ids);Object.keys(r).forEach(function(k){ps[k]=r[k]});rerender();}catch(e){}}
+async function loadNames(){}
+drawNav();drawDias();
+Object.keys(C).forEach(function(k){C[k].onSnapshot(function(s){clearTimeout(timer);msg.hidden=true;$('app').hidden=false;D[k]={};s.docs.forEach(function(x){D[k][x.id]=x.data()||{}});rerender();loadNames();},function(){msg.hidden=false;$('app').hidden=true;msg.textContent='Não foi possível carregar. Verifique as regras do Firestore.';});});
+cdoc.onSnapshot(function(s){cfg=s.data()||{};drawDias();rerender();},function(){});
+function shrink(file){return new Promise(function(ok,no){var im=new Image(),u=URL.createObjectURL(file);im.onload=function(){var s=Math.min(1,800/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(function(b){URL.revokeObjectURL(u);b?ok(b):no()},'image/jpeg',.7)};im.onerror=no;im.src=u})}
+document.body.addEventListener('submit',async function(e){
+ e.preventDefault();var f=e.target,k=f.dataset.f,id='i'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),o={owner:me,ownerNome:myName,criado:Date.now()};
+ try{
+  if(k=='lista')Object.assign(o,{nome:f.nome.value.trim(),emoji:f.emoji.value,prio:+f.prio.value,obs:f.obs.value.trim(),done:false});
+  if(k=='datas')Object.assign(o,{titulo:f.nome.value.trim(),data:f.data.value,anual:!!f.anual.value,emoji:'📅'});
+  if(k=='metas')Object.assign(o,{nome:f.nome.value.trim(),alvo:+f.alvo.value,atual:0});
+  if(k=='mem'){var b=f.foto.files[0];if(!b)return;var r={url:await toData(await shrink(b))};Object.assign(o,{url:r.url,legenda:f.legenda.value.trim()});}
+  await C[k].doc(id).set(o);f.reset();rerender(true);
+ }catch(err){alert('Não deu para salvar. Verifique a internet e tente de novo.');}
+});
+document.body.addEventListener('click',async function(e){
+ var t=e.target.closest('button');if(!t)return;
+ if(t.dataset.t){view=t.dataset.t;drawNav();rerender(true);return;}
+ if(t.dataset.fl){fil=t.dataset.fl;rerender(true);return;}
+ if(t.id==='bc'){var tx='Entra no nosso cantinho 💕 https://claude.ai/artifact/9XrCK6iqZHnqGDR98dSVU2 Código de convite: '+cs.codigo;try{await navigator.clipboard.writeText(tx);alert('Convite copiado! Envie para ela.');}catch(x){prompt('Copie o convite:',tx);}return;}
+ if(t.id==='bd'){var v=await prompt('Data de início do namoro (AAAA-MM-DD):',cfg.inicio||'');if(v&&/^\d{4}-\d{2}-\d{2}$/.test(v.trim())){try{await cdoc.set({inicio:v.trim()});}catch(x){alert('Não foi possível salvar a data.');}}return;}
+ if(t.dataset.g){var arr=t.dataset.g=='roleta'?IDEIAS:PERG,el=$(t.dataset.g=='roleta'?'r1':'r2'),n=t.dataset.g=='roleta'?12:1,i=0;var h=setInterval(function(){el.textContent=arr[Math.floor(Math.random()*arr.length)];if(++i>=n)clearInterval(h)},90);return;}
+ var k=t.dataset.k,id=t.dataset.id,d=D[k]&&D[k][id];if(!d)return;
+ try{
+  if(t.dataset.a=='del'){if(await confirm('Apagar este item?'))await C[k].doc(id).delete();}
+  if(t.dataset.a=='done')await C[k].doc(id).update({done:!d.done});
+  if(t.dataset.a=='inc')await C[k].doc(id).update({atual:Math.min(d.alvo,(d.atual||0)+1)});
+  if(t.dataset.a=='dec')await C[k].doc(id).update({atual:Math.max(0,(d.atual||0)-1)});
+ }catch(x){alert('Não foi possível alterar.');}
+});
+}
+let started=false,authed=false;
+function ready(){if(!authed)return;if(!NOME){lg.hidden=false;return;}lg.hidden=true;if(!started){started=true;startApp();}}
+if(!ok){lg.hidden=false;lerr.textContent="Falta colar a configuração do Firebase no arquivo.";}
+else{
+document.getElementById("lf").addEventListener("submit",e=>{e.preventDefault();const n=e.target.nome.value.trim();if(!n)return;NOME=n.charAt(0).toUpperCase()+n.slice(1);try{localStorage.setItem("cantinho_nome",NOME);}catch(x){}ready();});
+onAuthStateChanged(auth,u=>{if(u){authed=true;ready();}});
+signInAnonymously(auth).catch(()=>{lg.hidden=false;lerr.textContent="Ative o login Anônimo no Firebase (passo 2).";});
+}
+</script>
+</body>
+</html>
