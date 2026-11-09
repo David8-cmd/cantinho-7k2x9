@@ -114,7 +114,7 @@ function inv(){return cs&&cs.a===me&&!cs.b?' <button id="bc">🔗 convidar</butt
 var yt=null,cur=null,ytReady=false,pend=null;
 window.onYouTubeIframeAPIReady=function(){ytReady=true;if(pend)play(pend)};
 (function(){var sc=document.createElement('script');sc.src='https://www.youtube.com/iframe_api';document.head.appendChild(sc);})();
-function ytId(u){u=(u||'').trim();var m=u.match(/(?:youtu\.be\/|v=|\/shorts\/|\/embed\/)([A-Za-z0-9_-]{11})/);return m?m[1]:(/^[A-Za-z0-9_-]{11}$/.test(u)?u:null);}
+function ytId(u){u=(u||'').trim();var m=u.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/|\/v\/)([A-Za-z0-9_-]{11})/);return m?m[1]:(/^[A-Za-z0-9_-]{11}$/.test(u)?u:null);}
 function order(){return list('musica').sort(function(a,b){return (a.criado||0)-(b.criado||0)});}
 var YT_KEY='COLE_AQUI_CHAVE',RES=[];
 var HOSTS=[['p','pipedapi.kavin.rocks'],['p','pipedapi.adminforge.de'],['p','api.piped.private.coffee'],['i','yewtu.be'],['i','inv.nadeko.net'],['i','invidious.nerdvpn.de']];
@@ -216,8 +216,8 @@ document.body.addEventListener('submit',async function(e){
   if(k=='datas')Object.assign(o,{titulo:f.nome.value.trim(),data:f.data.value,anual:!!f.anual.value,emoji:'📅'});
   if(k=='metas')Object.assign(o,{nome:f.nome.value.trim(),alvo:+f.alvo.value,atual:0});
   if(k=='mem'){var b=f.foto.files[0];if(!b)return;var r={url:await toData(await shrink(b))};Object.assign(o,{url:r.url,legenda:f.legenda.value.trim()});}
-  if(k=='musica'){var vid=ytId(f.link.value);if(!vid){alert('Cole um link válido do YouTube.');return;}var tt=f.titulo.value.trim();if(!tt){try{var rr=await fetch('https://www.youtube.com/oembed?format=json&url='+encodeURIComponent('https://www.youtube.com/watch?v='+vid));tt=(await rr.json()).title;}catch(x){}}Object.assign(o,{vid:vid,titulo:tt||'Música'});}
- await C[k].doc(id).set(o);f.reset();rerender(true);
+  if(k=='musica'){var vid=ytId(f.link.value)||ytId(f.titulo.value);if(!vid){alert(/list=/.test(f.link.value)?'Esse link é de uma playlist. Abra uma música específica e copie o link dela.':'Não achei uma música nesse link. Cole o link de um vídeo do YouTube (começa com youtube.com ou youtu.be).');return;}var tt=f.titulo.value.trim();if(/^https?:\/\//i.test(tt))tt='';if(!tt){try{var ac2=new AbortController(),tm2=setTimeout(function(){ac2.abort()},4000);var rr=await fetch('https://www.youtube.com/oembed?format=json&url='+encodeURIComponent('https://www.youtube.com/watch?v='+vid),{signal:ac2.signal});clearTimeout(tm2);tt=(await rr.json()).title;}catch(x){}}Object.assign(o,{vid:vid,titulo:tt||'Música'});}
+ await C[k].doc(id).set(o);f.reset();rerender(true);if(k=='musica')alert('Música adicionada à playlist ✓');
  }catch(err){alert('Não deu para salvar. Verifique a internet e tente de novo.');}
 });
 document.body.addEventListener('click',async function(e){
